@@ -2987,6 +2987,9 @@ the specific language governing permissions and limitations under the Apache Lic
             // keep track of the search's value before it gets cleared
             this.nextSearchTerm = this.opts.nextSearchTerm(data, this.search.val());
 
+            // -1 it's an tmp value, replace when request is recept
+            var val = this.opts.element.val().replace('-1', this.id(data));
+            this.opts.element.val(val);
             this.clearSearch();
             this.updateResults();
 
