@@ -1332,6 +1332,9 @@ the specific language governing permissions and limitations under the Apache Lic
             }
             css = $.extend(css, evaluate(this.opts.dropdownCss, this.opts.element));
 
+	    css.left = '0px';
+            css.top = '0px';
+
             $dropdown.css(css);
         },
 
@@ -1393,7 +1396,8 @@ the specific language governing permissions and limitations under the Apache Lic
             this.clearDropdownAlignmentPreference();
 
             if(this.dropdown[0] !== this.body.children().last()[0]) {
-                this.dropdown.detach().appendTo(this.body);
+                //this.dropdown.detach().appendTo(this.body);
+		this.dropdown.detach().appendTo(this.container);
             }
 
             // create the dropdown mask if doesn't already exist
@@ -1402,7 +1406,8 @@ the specific language governing permissions and limitations under the Apache Lic
                 mask = $(document.createElement("div"));
                 mask.attr("id","select2-drop-mask").attr("class","select2-drop-mask");
                 mask.hide();
-                mask.appendTo(this.body);
+                //mask.appendTo(this.body);
+		mask.appendTo(this.container);
                 mask.on("mousedown touchstart click", function (e) {
                     // Prevent IE from generating a click event on the body
                     reinsertElement(mask);
